@@ -6,16 +6,19 @@ FROM node
 
 WORKDIR /app
 
+# Optimalization to not run npm install every single time as libraries WONT CHANGE. (Layer architecture)
+COPY package.json /app
+
+# gacha executed in working dictionary which is root -> change workdir.
+RUN npm install
+
 # copy all folder/subfolders/project inside the image (internal filesystem)
 # COPY . /app
 # With workdir set this can now be set as.
 # COPY . ./
 COPY . /app
 
-# gacha executed in working dictionary which is root -> change workdir.
-RUN npm install
-
-# Expose port to listen on the container.
+# Expose port to listen on the container. (Optional but best practice.)
 EXPOSE 80
 
 # ! CMD VS RUN READ FIRST ROWS.

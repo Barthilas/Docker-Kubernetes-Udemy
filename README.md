@@ -1,3 +1,11 @@
+All docker commands where an ID can be used, you don't always have to copy / write out the full id. Just use the first (few) character(s).
+docker run abcdefg
+docker run abc (will also run)
+
+Images are read-only (snapshot, closed template). To change you need to re-build again.
+Docker caches every instruction result (layer based architecture).
+When one layer changes all subsequent layers also change.
+
 Build Image from dockerfile
 docker build .
 
