@@ -14,6 +14,7 @@ docker --help
 
 Build Image from dockerfile
 docker build .
+-tag name(repository):tag example node:14 
 
 Run Image (Create container)
 docker run $id
@@ -24,6 +25,7 @@ Parameters:
 -it combined
 -d detach (will not block terminal)
 --rm (automatically delete container when it exits.)
+--name custom name
 
 Restart container
 docker start
@@ -57,6 +59,9 @@ docker images prune (remove all images)
 
 Inspect images
 docker image inspect IMAGE_NAME
+
+Copy files to/from already running container
+docker cp source/file container_name:path_inside_container
 
 Image vs container
 container = running unit of software
