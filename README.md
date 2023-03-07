@@ -78,3 +78,7 @@ Docker hub
 - search for docker images
 - docker run node (create container based on image of node)
 - docker run -it node
+
+Volumes (persist data when container shuts down)
+- folders on host machine which are mounted into containers
+- containers can read/write from volume
