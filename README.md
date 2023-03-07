@@ -3,7 +3,7 @@ docker run abcdefg
 docker run abc (will also run)
 
 Images are read-only (snapshot, closed template). To change you need to re-build again.
-Docker caches every instruction result (layer based architecture).
+Docker caches every instruction result (layer based architecture). LAYER = INSTRUCTION
 When one layer changes all subsequent layers also change.
 
 Docker Run vs Start
@@ -14,7 +14,7 @@ docker --help
 
 Build Image from dockerfile
 docker build .
--tag name(repository):tag example node:14 
+--tag name(repository):tag format example node:14 
 
 Run Image (Create container)
 docker run $id
@@ -62,6 +62,13 @@ docker image inspect IMAGE_NAME
 
 Copy files to/from already running container
 docker cp source/file container_name:path_inside_container
+
+Push image to docker hub
+docker login (if not)
+docker push barthilas/udemy:tagname
+
+Rename/Retag Image
+docker tag oldname newname
 
 Image vs container
 container = running unit of software
