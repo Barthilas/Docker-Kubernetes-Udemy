@@ -96,5 +96,5 @@ Bind Mounts
 - managed by us
 - persistent and editable data (e.g source code)
 - example: docker run -d -p 
-3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "C:\Users\snetivy\Desktop\Docker Udemy\data-volumes-01-starting-setup":/app  feedback-node:values
-- path shortcut: -v "%cd%":/app
+3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "C:\Users\snetivy\Desktop\Docker Udemy\data-volumes-01-starting-setup":/app -v /app/node_modules  feedback-node:value
+explained: you can now change server.js and see changes inside the running container because its using bind mounts to local disk. To make sure that node_modules persist we create another anonymous volume app/node_modules. (Else they would be overwritten completely by binded mount which doesnt have node_modules.)
