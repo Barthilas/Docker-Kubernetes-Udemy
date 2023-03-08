@@ -82,6 +82,7 @@ Docker hub
 
 Volumes (Docker) (persist data when container shuts down)
 - docker volumes ls
+- managed by docker
 - folders on host machine which are mounted into containers
 - containers can read/write from volume
 - anonymous or named (anonymous exists as long as container)
@@ -90,3 +91,10 @@ Volumes (Docker) (persist data when container shuts down)
 
 Delete volume
 docker volume rm VOL_NAME / docker volume prune
+
+Bind Mounts
+- managed by us
+- persistent and editable data (e.g source code)
+- example: docker run -d -p 
+3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "C:\Users\snetivy\Desktop\Docker Udemy\data-volumes-01-starting-setup":/app  feedback-node:values
+- path shortcut: -v "%cd%":/app
