@@ -36,7 +36,13 @@ app.post('/create', async (req, res) => {
     if (exists) {
       res.redirect('/exists');
     } else {
-      await fs.rename(tempFilePath, finalFilePath);
+      // doesnt like volumes
+      // await fs.rename(tempFilePath, finalFilePath);
+
+      // manual fix
+      await fs.copyFile(tempFilePath, finalFilePath);
+      await fs.unlink(tempFilePath);
+
       res.redirect('/');
     }
   });
