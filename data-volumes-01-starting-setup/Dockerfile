@@ -9,6 +9,6 @@ RUN npm install
 
 COPY . .
 
-VOLUME [ "/app/feedback" ]
+# VOLUME [ "/app/feedback" ] anonymous
 
 CMD [ "node", "server.js" ]

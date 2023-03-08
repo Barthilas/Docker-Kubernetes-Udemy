@@ -24,6 +24,7 @@ Parameters:
 -t expose terminal by container
 -it combined
 -d detach (will not block terminal)
+-v feedback:/app/feedback volume (named)
 --rm (automatically delete container when it exits.)
 --name custom name
 
@@ -79,6 +80,13 @@ Docker hub
 - docker run node (create container based on image of node)
 - docker run -it node
 
-Volumes (persist data when container shuts down)
+Volumes (Docker) (persist data when container shuts down)
+- docker volumes ls
 - folders on host machine which are mounted into containers
 - containers can read/write from volume
+- anonymous or named (anonymous exists as long as container)
+- example: docker run -d -p 
+3000:80 --rm --name feedback-app -v feedback:/app/feedback feedback-node:value  (creates named volume feedback with path /app/feedback)
+
+Delete volume
+docker volume rm VOL_NAME / docker volume prune
