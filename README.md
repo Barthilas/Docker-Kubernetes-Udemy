@@ -85,7 +85,8 @@ Volumes (Docker) (persist data when container shuts down)
 - managed by docker
 - folders on host machine which are mounted into containers
 - containers can read/write from volume
-- anonymous or named (anonymous exists as long as container)
+- anonymous or named (anonymous exists as long as container, removed when container stops with --rm parameters)
+- Anonymous volume usage: prioritize container-internal paths higher than external paths.
 - example: docker run -d -p 
 3000:80 --rm --name feedback-app -v feedback:/app/feedback feedback-node:value  (creates named volume feedback with path /app/feedback)
 
@@ -95,6 +96,7 @@ docker volume rm VOL_NAME / docker volume prune
 Bind Mounts
 - managed by us
 - persistent and editable data (e.g source code)
+- use case: provide "live data" to the container (no rebuilding needed)
 - example: docker run -d -p 
 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "C:\Users\snetivy\Desktop\Docker Udemy\data-volumes-01-starting-setup":/app -v /app/node_modules  feedback-node:value
 explained: you can now change server.js and see changes inside the running container because its using bind mounts to local disk. To make sure that node_modules persist we create another anonymous volume app/node_modules. (Else they would be overwritten completely by binded mount which doesnt have node_modules.)

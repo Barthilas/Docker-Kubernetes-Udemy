@@ -11,4 +11,6 @@ COPY . .
 
 # VOLUME [ "/app/feedback" ] anonymous volume
 
-CMD [ "node", "server.js" ]
+# CMD [ "node", "server.js" ] doesnt watch for changes
+CMD [ "npm", "start" ]
+
