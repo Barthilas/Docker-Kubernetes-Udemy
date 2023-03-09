@@ -116,6 +116,7 @@ arg: available only inside dockerfile.
 Set on image build docker build --build-arg
 
 env: available inside docerfile and in application code.
+!BEWARE OF SECURITY! KEYS, PASSWORDS ETC.
 set in dockerfile or docker run --env PORT=8000
 shortcut: -e
 multiple -e PORT=8000 -e X=Y
