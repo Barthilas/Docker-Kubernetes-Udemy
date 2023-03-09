@@ -1,6 +1,7 @@
 FROM node:14
+ENV PORT 80
 
-EXPOSE 80
+EXPOSE $PORT
 WORKDIR /app
 
 COPY package.json .

@@ -19,7 +19,7 @@ docker build .
 Run Image (Create container)
 docker run $id
 Parameters:
--p 3000:80 (map port x (mine) to y (image port))
+-p 3000:80 (map port x (mine) to y (image internal port))
 -i interactive
 -t expose terminal by container
 -it combined
@@ -110,3 +110,13 @@ explained: you can now change server.js and see changes inside the running conta
 
 Copy vs bind mount
 - bind mount will not be used in production hence why copy . . stays in dockerfile.
+
+Arguments and Environment variables
+arg: available only inside dockerfile. 
+Set on image build docker build --build-arg
+
+env: available inside docerfile and in application code.
+set in dockerfile or docker run --env PORT=8000
+shortcut: -e
+multiple -e PORT=8000 -e X=Y
+OR from file: --env-file ./.env
