@@ -113,7 +113,7 @@ Copy vs bind mount
 
 Arguments and Environment variables
 arg: available only inside dockerfile. 
-Set on image build docker build --build-arg
+Set on image build docker build --build-arg DEFAULT_PORT=8000
 
 env: available inside docerfile and in application code.
 !BEWARE OF SECURITY! KEYS, PASSWORDS ETC.
