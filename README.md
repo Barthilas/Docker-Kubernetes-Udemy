@@ -121,3 +121,7 @@ set in dockerfile or docker run --env PORT=8000
 shortcut: -e
 multiple -e PORT=8000 -e X=Y
 OR from file: --env-file ./.env
+
+Container communication
+- request inside the container to www works without any special settings.
+- inside container to local machine: replace localhost with special domain"host.docker.internal"
