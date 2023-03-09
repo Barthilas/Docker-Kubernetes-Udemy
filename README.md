@@ -93,6 +93,12 @@ Volumes (Docker) (persist data when container shuts down)
 Delete volume
 docker volume rm VOL_NAME / docker volume prune
 
+Create Volume
+docker volume create feedback-files
+
+Inspect volume
+docker volume inspect NAME
+
 Bind Mounts
 - managed by us
 - persistent and editable data (e.g source code)
@@ -100,3 +106,7 @@ Bind Mounts
 - example: docker run -d -p 
 3000:80 --rm --name feedback-app -v feedback:/app/feedback -v "C:\Users\snetivy\Desktop\Docker Udemy\data-volumes-01-starting-setup":/app -v /app/node_modules  feedback-node:value
 explained: you can now change server.js and see changes inside the running container because its using bind mounts to local disk. To make sure that node_modules persist we create another anonymous volume app/node_modules. (Else they would be overwritten completely by binded mount which doesnt have node_modules.)
+- :ro is readonly, container can only read.
+
+Copy vs bind mount
+- bind mount will not be used in production hence why copy . . stays in dockerfile.
