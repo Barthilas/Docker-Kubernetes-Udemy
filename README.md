@@ -125,3 +125,11 @@ OR from file: --env-file ./.env
 Container communication
 - request inside the container to www works without any special settings.
 - inside container to local machine: replace localhost with special domain"host.docker.internal"
+- container to container -> container networks (docker run --network my_network...)
+
+Container Network
+- docker network create favorites-net
+- docker network ls
+- docker run -d --name mongodb --network favorites-net mongo 
+- docker run --name favorites --network favorites-net -d --rm -p 3000:3000 favorites-node
+
