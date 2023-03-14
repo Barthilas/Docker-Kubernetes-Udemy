@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  mongodb:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+    environment:
+      # - MONGO_INITDB_ROOT_USERNAME=admin different syntax
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    # env_file:
+    #   - ./env/mongo.env
+    # networks: not required, docker compose automatically generates one network for these containers.
+    #   - goals-net
+  # backend:
+
+  # frontend:
+
+# all named volumes here
+volumes:
+  data:

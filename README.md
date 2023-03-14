@@ -133,3 +133,10 @@ Container Network
 - docker run -d --name mongodb --network favorites-net mongo 
 - docker run --name favorites --network favorites-net -d --rm -p 3000:3000 favorites-node
 
+Docker Compose: Multi-Container Orchestration
+- solves too much noise when setting up three containers working together (named volumes, bind mounts, networks)
+- automate multi-container setups
+- will not replace dockerfiles
+- does not replace images or containers
+- not suited for managing multiple containers on different hosts
+
