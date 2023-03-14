@@ -1,3 +1,7 @@
+// DO NOT REPLACE LOCALHOST WITH goals-backend container
+// IT WILL NOT WORK.
+// Frontend code is running in browser.. hence you cannot user container name. Browser does not understand containers.
+
 import React, { useState, useEffect } from 'react';
 
 import GoalInput from './components/goals/GoalInput';

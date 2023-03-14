@@ -12,3 +12,5 @@ EXPOSE 3000
 
 CMD [ "npm", "start" ]
 
+# the -it is important, else the container won't run.
+# docker run --name goals-frontend --rm -p 3000:3000 -it --network goals-net goals-react
