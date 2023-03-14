@@ -145,3 +145,6 @@ Docker Compose: Multi-Container Orchestration
 - docker-compose down
   - v delete volumes
 
+"Utility Containers" (unofficial naming)
+docker exec -it container_name npm init
+docker run -it node npm init (override default command)
