@@ -139,4 +139,8 @@ Docker Compose: Multi-Container Orchestration
 - will not replace dockerfiles
 - does not replace images or containers
 - not suited for managing multiple containers on different hosts
+- docker-compose up
+  - d detached
+- docker-compose down
+  - v delete volumes
 

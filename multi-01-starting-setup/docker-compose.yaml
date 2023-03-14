@@ -12,10 +12,26 @@ services:
     #   - ./env/mongo.env
     # networks: not required, docker compose automatically generates one network for these containers.
     #   - goals-net
-  # backend:
+  backend:
+    build: ./backend
+    # build: 
+    #   context: ./backend
+    #   dockerfile: Dockerfile
+    #   args: ...
+    ports:
+      - "80:80"
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on:
+      - mongodb
 
   # frontend:
 
 # all named volumes here
 volumes:
   data:
+  logs:
