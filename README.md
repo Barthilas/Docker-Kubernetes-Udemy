@@ -148,3 +148,9 @@ Docker Compose: Multi-Container Orchestration
 "Utility Containers" (unofficial naming)
 docker exec -it container_name npm init
 docker run -it node npm init (override default command)
+
+Dockers deployment
+- bind mounts shouldnt be used.
+- containerized apps might need a build step (e.g. Angular)
+- multi-container projects might need to be split across multiple hosts.
+- trade-offs between control and responsibility.
