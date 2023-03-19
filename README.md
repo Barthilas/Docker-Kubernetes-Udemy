@@ -154,3 +154,55 @@ Dockers deployment
 - containerized apps might need a build step (e.g. Angular)
 - multi-container projects might need to be split across multiple hosts.
 - trade-offs between control and responsibility.
+- without kubernetes or similiar locked to service provider deployment process/specifications (AWS, Azure)!
+
+
+Kubernetes
+- de facto standard for orchestrating container deployments (without locking to one service like AWS, Azure..)
+
+Core Concepts
+- Pod (Container) - usually not created by you but by Deployment object.
+- Worker Node - runs container of your application, machines/virtual instances.
+- Master Node - The Control Plane - controls worker nodes
+- Cluster - contains all above.
+
+- minikube start --driver=docker
+- minikube status
+- minikube dashboard
+
+Deploy imperative approach
+kubectl help
+kubectl create deployment first-app --image=kub-first-app
+kubectl get deployments
+kubectl get pods
+kubectl delete deployment first-app
+(fails because image does not exist locally on minikube -> push to docker hub)
+docker tag kub-first-app barthilas/kub-first-app
+docker push barthilas/kub-first-app
+(try again - success)
+kubectl create deployment first-app --image=barthilas/kub-first-app
+(use "service" object to reach pod, otherwise unaccessible from outside.)
+kubectl expose deployment first-app --port=8080 --type=LoadBalancer
+kubectl get services
+minikube service first-app (not needed on deployed instance as external ip should be filled by loadBalancer, on localhost we use minikube command)
+
+Scaling
+kubectl scale deployment/first-app --replicas=3
+kubectl scale deployment/first-app --replicas=1
+
+Update deployment (you need to change tag)
+kubectl set image deployment/first-app kub-first-app=barthilas/kub-first-app:2
+kubectl rollout status deployment/first-app
+
+Rollback
+kubectl set image deployment/first-app kub-first-app=barthilas/kub-first-app:3 (doesnt exist)
+kubectl rollout status deployment/first-app (app will still run as pod will be terminated only when the new pod is up and running successfully)
+kubectl rollout undo deployment/first-app
+(kubectl rollout undo deployment/first-app --to-revision=1)
+
+History
+kubectl rollout history deployment/first-app 
+kubectl rollout history deployment/first-app --revision=2
+
+Docker declarative (comparable to docker compose)
+kubectl apply -f config.yaml
