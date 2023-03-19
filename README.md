@@ -205,4 +205,4 @@ kubectl rollout history deployment/first-app
 kubectl rollout history deployment/first-app --revision=2
 
 Docker declarative (comparable to docker compose)
-kubectl apply -f config.yaml
+kubectl apply -f=deployment.yaml
