@@ -1,0 +1,17 @@
+# Single node testing environment only
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: host-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce # all pods can access given they run under one node.
+    # - ReadOnlyMany
+    # - ReadWriteMany
+  hostPath:
+    path: /data
+    type: DirectoryOrCreate

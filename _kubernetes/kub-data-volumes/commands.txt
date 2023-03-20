@@ -6,3 +6,12 @@ docker push barthilas/kub-data-demo
 
 kubectl apply -f=service.yaml,deployment.yaml  
 minikube service story-service
+
+kubectl get sc (storage class)
+
+kubectl apply -f=host-pv.yaml
+kubectl apply -f=host-pvc.yaml
+kubectl apply -f=deployment.yaml
+
+kubectl get pv
+kubectl get pvc

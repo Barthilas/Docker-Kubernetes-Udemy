@@ -20,4 +20,10 @@ spec:
               name: story-volume
       volumes:
         - name: story-volume
-          emptyDir: {} # survives container restarts. Writing works, firs read fails
+          persistentVolumeClaim:
+            claimName: host-pvc
+        # a bit like bind mount, more pod-independence. Share already existing data to pod.
+          # hostPath:
+          #   path: /data
+          #   type: DirectoryOrCreate
+          # emptyDir: {} # survives container restarts. Writing works, firs read fails. EmptyDir per Pod -> replicas > 1 fails, great for single replica.
