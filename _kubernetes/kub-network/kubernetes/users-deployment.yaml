@@ -17,4 +17,6 @@ spec:
           image: barthilas/kub-demo-users:latest
           env:
             - name: AUTH_ADDRESS
-              value: localhost # internal container to container communication in same pod.
+              value: "auth-service.default" # Using DNS (kubectl get namespaces {after .})
+              # value: "10.106.214.83" # pod to pod internal (kubectl get services), clumsy better solution above.
+              # value: localhost # internal container to container communication in same pod. (not recommended having two containers inside the same pod, unless they are STRONGLY tied.)
