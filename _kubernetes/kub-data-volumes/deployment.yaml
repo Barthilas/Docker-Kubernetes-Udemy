@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: story-deployments
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: story
+  template: 
+    metadata:
+      labels:
+        app: story
+    spec:
+      containers:
+        - name: story
+          image: barthilas/kub-data-demo:1
+          volumeMounts:
+            - mountPath: /app/story # path in container
+              name: story-volume
+      volumes:
+        - name: story-volume
+          emptyDir: {} # survives container restarts. Writing works, firs read fails

@@ -2,12 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: second-app-deployment
+  labels: #can be used for deletion
+    group: example
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: second-app
       tier: backend
+    # matchExpression:
+    #   - {key: app, operator: In, values: [second-app, first-app]}
 
   template:
     metadata:
@@ -18,5 +22,12 @@ spec:
       containers:
         - name: second-nodejs
           image: barthilas/kub-first-app:2
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 3
+            initialDelaySeconds: 5
         # - name: ....
         #   image: ....

@@ -1,0 +1,8 @@
+docker-compose up -d --build 
+docker-compose down
+
+docker build -t barthilas/kub-data-demo .
+docker push barthilas/kub-data-demo   
+
+kubectl apply -f=service.yaml,deployment.yaml  
+minikube service story-service

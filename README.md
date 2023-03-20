@@ -206,3 +206,7 @@ kubectl rollout history deployment/first-app --revision=2
 
 Docker declarative (comparable to docker compose)
 kubectl apply -f=deployment.yaml
+kubectl delete -f=deployment.yaml,service.yaml
+kubectl delete deployments,services -l group=example
+
+Kubernetes Storage & Data
