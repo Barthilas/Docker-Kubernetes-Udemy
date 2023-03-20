@@ -18,5 +18,3 @@ spec:
           env:
             - name: AUTH_ADDRESS
               value: localhost # internal container to container communication in same pod.
-        - name: auth
-          image: barthilas/kub-demo-auth:latest
